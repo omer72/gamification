@@ -1,42 +1,45 @@
+const INIT = new WeakMap();
+const SERVICE = new WeakMap();
+
 class DashboardController {
-  constructor ($state,parseSrv) {
+  constructor ($state,parseSrv,$interval) {
     'ngInject';
 
-    this.state = $state;
-    this.userName = '';
-    this.password = '';
+    SERVICE.set(this,parseSrv);
     this.parseSrv = parseSrv;
-
+    this.getClallUser($interval);
+    this.clallUsers = [];
+    this.questionList = [];
+    this.stop;
+    INIT.set(this,() =>{
+      SERVICE.get(this).getQuestionList().then(questionList =>{
+      this.questionList = questionList;
+    })
+    });
+    INIT.get(this)();
   }
 
-  navigateToNextPage(){
-    this.state.go('home');
-  }
 
-  login() {
-    console.log("login");
+  getClallUser($interval){
     var vm = this;
-    this.parseSrv.login(this.userName,this.password).then(
-      function success(res){
-        vm.state.go('home');
-      },
-      function error(err){
-        console.log("faild to login err ->"+vm);
-        vm.parseSrv.addUser(vm.userName,vm.password).then(
-          function success(res){
-            vm.state.go('home');
-          },
-          function error(err){
-            console.log("err ->"+vm);
+    console.log('getClallUser');
+
+    this.stop = $interval(function(){
+      SERVICE.get(vm).getClallUser().then(
+        function success(results){
+          var users = [];
+          for (var j = 0; j < results.length; j++) {
+            users.push({"username": results[j].attributes.username, "points": results[j].attributes.points,"badge":results[j].attributes.badge});
           }
-        )
-      }
-    )
-    //var user = new User();
-    //user.save({username: this.userName,password : this.password}).then(function(object) {
-    //  this.state.go("home");
-    //});
+          vm.clallUsers = users;
+        },
+        function error(err){
+          console.log("err ->"+vm);
+        })
+    },5000)
   }
+
+
 
 }
 

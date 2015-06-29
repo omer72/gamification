@@ -1,7 +1,8 @@
-function runBlock ($log) {
+function runBlock ($log,$rootScope) {
   'ngInject';
   $log.info('runBlock end');
-  Parse.initialize("8v0qHt7r9kjaSJKVWtRZmzsEN8SyL7QP5kLKYmxe", "3FnAm74cIZoeEKYnO6fD6GMP2uHyIRZMhQMUojTh");
+  Parse.initialize("DbDOtp2dYVXrfZNyUtP8AjajUQpN2rp861KKQ82g", "ymqsrJ8I1Aue4BFQhlmUeeRLmnFop8xUKsA0b5MZ");
+
 }
 
 export default runBlock;

@@ -6,17 +6,20 @@
     </header>
 
     <section class="jumbotron" style="height: inherit" layout="column" layout-align="center center">
-      <h1>Login</h1>
-      <md-whiteframe class="md-whiteframe-z5" layout="column" layout-align="space-around center" style="background-color: floralwhite;width: 50%">
-            <md-input-container>
-              <label>Name</label>
-              <input ng-model="loginCtrl.userName">
-            </md-input-container>
-            <md-input-container>
-              <label>Password</label>
-              <input ng-model="loginCtrl.password">
-            </md-input-container>
-            <md-button class="md-raised" ng-click="loginCtrl.login()">Login</md-button>
+      <h1>{{gamePanelCtrl.currentUser.username}} </h1>
+      <h2>Your Points : {{gamePanelCtrl.currentUser.points}}</h2>
+      <h2>Your Badges : {{gamePanelCtrl.currentUser.badges}}</h2>
+      <md-whiteframe class="md-whiteframe-z5" layout="column" layout-align="space-around center" style="width: 50%">
+        {{gamePanelCtrl.alert}}
+        <!--<md-input-container>-->
+              <!--<label>Name</label>-->
+              <!--<input ng-model="loginCtrl.userName">-->
+            <!--</md-input-container>-->
+            <!--<md-input-container>-->
+              <!--<label>Password</label>-->
+              <!--<input ng-model="loginCtrl.password">-->
+            <!--</md-input-container>-->
+            <!--<md-button class="md-raised" ng-click="loginCtrl.login()">Login</md-button>-->
       </md-whiteframe>
 
     </section>

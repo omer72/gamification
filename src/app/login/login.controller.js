@@ -18,12 +18,13 @@ class LoginController {
     var vm = this;
     this.parseSrv.login(this.userName,this.password).then(
       function success(res){
-        vm.state.go('game');
+        vm.state.go('gamePanel');
       },
       function error(err){
-        console.log("faild to login err ->"+vm);
+        console.log("faild to login err ->");
         vm.parseSrv.addUser(vm.userName,vm.password).then(
           function success(res){
+            vm.parseSrv.addClallUser(vm.userName,res.id);
             vm.state.go('home');
           },
           function error(err){

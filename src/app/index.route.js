@@ -1,12 +1,12 @@
 function routerConfig ($stateProvider, $urlRouterProvider) {
   'ngInject';
   $stateProvider
-    .state('home', {
-      url: '/',
-      templateUrl: 'app/main/main.html',
-      controller: 'MainController',
-      controllerAs: 'main'
-    })
+    //.state('home', {
+    //  url: '/',
+    //  templateUrl: 'app/main/main.html',
+    //  controller: 'MainController',
+    //  controllerAs: 'main'
+    //})
     .state('login', {
       url: '/login',
       templateUrl: 'app/login/login.html',
@@ -18,6 +18,13 @@ function routerConfig ($stateProvider, $urlRouterProvider) {
       templateUrl: 'app/dashboard/dashboard.html',
       controller: 'DashboardController',
       controllerAs: 'dashboardCtrl'
+    })
+
+    .state('gamePanel', {
+      url: '/gamePanel',
+      templateUrl: 'app/gamePanel/gamePanel.html',
+      controller: 'GamePanelController',
+      controllerAs: 'gamePanelCtrl'
     })
   ;
 
