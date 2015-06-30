@@ -24,29 +24,30 @@ class GamePanelController {
       SERVICE.get(vm).checkReadyQuestion().then(
         function success(results) {
           var question = {};
-          //for (var j = 0; j < results.length; j++) {
+          if (results.length >0) {
             question = {
               "questionId": results[0].questionId,
               "subject": results[0].subject,
               "points": results[0].points,
               "badge": results[0].badge
             };
-          //}
-          if (vm.creentQuestion == undefined || vm.creentQuestion.id != question.id){
-            vm.creentQuestion = question;
-            sessionStorage.currentQuestion = JSON.stringify(question);
-            vm.stopInterval();
-            vm.mdDialog.show({
-              controller: 'DialogController',
-              controllerAs : 'dialogCtrl',
-              templateUrl: 'app/gamePanel/dialog1.tmpl.html',
-              parent: angular.element(document.body),
-            })
-              .then(function(answer) {
-                vm.alert = 'You said the information was "' + answer + '".';
-              }, function() {
-                vm.alert = 'You cancelled the dialog.';
-              });
+            //}
+            if (vm.creentQuestion == undefined || vm.creentQuestion.id != question.id) {
+              vm.creentQuestion = question;
+              sessionStorage.currentQuestion = JSON.stringify(question);
+              vm.stopInterval();
+              vm.mdDialog.show({
+                controller: 'DialogController',
+                controllerAs: 'dialogCtrl',
+                templateUrl: 'app/gamePanel/dialog1.tmpl.html',
+                parent: angular.element(document.body),
+              })
+                .then(function (answer) {
+                  vm.alert = 'You said the information was "' + answer + '".';
+                }, function () {
+                  vm.alert = 'You cancelled the dialog.';
+                });
+            }
           }
 
         },
@@ -62,6 +63,15 @@ class GamePanelController {
       this.interval.cancel(this.stop);
       this.stop = undefined;
     }
+  }
+
+  reward(){
+    this.mdDialog.show({
+      controller: 'RewardController',
+      controllerAs: 'rewardCtrl',
+      templateUrl: 'app/reward/reward.tmpl.html',
+      parent: angular.element(document.body),
+    })
   }
 
 }

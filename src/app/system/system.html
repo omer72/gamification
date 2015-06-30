@@ -1,0 +1,44 @@
+<div layout="vertical" layout-fill style="height: inherit">
+
+  <md-content style="width: 100%;height: 100%">
+    <header>
+      <!--<acme-navbar creationDate="loginCtrl.creationDate" />-->
+    </header>
+
+    <section class="jumbotron" style="height: inherit;background-color: #036cdb" layout="column" layout-align="center center">
+      <img src="assets/images/logo.png" alt="MorImpact"><br>
+      <h1>System</h1>
+      <md-whiteframe class="md-whiteframe-z5" layout="column" layout-align="space-around center" style="background-color: floralwhite;width: 80%">
+        <form name="projectForm" style="width: inherit">
+
+          <md-input-container>
+            <label>Hourly Rate (USD)</label>
+            <input required type="number" step="any" name="rate" ng-model="systemCtrl.rate" min="0" max="100">
+            <div ng-messages="projectForm.rate.$error">
+              <div ng-message="required">You've got to charge something! You can't just <b>give away</b> a Missile Defense System.</div>
+              <div ng-message="min">You should charge at least $1 an hour. This job is a big deal... if you mess up, everyone dies!</div>
+              <div ng-message="max">More then $100 an hour? That's a little ridiculous. I doubt event Bill Clinton could afford that.</div>
+            </div>
+
+          </md-input-container>
+          <md-button class="md-raised" ng-click="systemCtrl.submitForm()">Submit</md-button>
+        </form>
+      </md-whiteframe>
+
+    </section>
+
+    <!--<div class="techs" layout-align="center">-->
+    <!--<md-card ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">-->
+    <!--<div class="thumbnail">-->
+    <!--<img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">-->
+    <!--<div class="caption">-->
+    <!--<h3>{{ awesomeThing.title }}</h3>-->
+    <!--<p>{{ awesomeThing.description }}</p>-->
+    <!--<p><a ng-href="{{ awesomeThing.url }}">{{ awesomeThing.url }}</a></p>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</md-card>-->
+    <!--</div>-->
+  </md-content>
+
+</div>

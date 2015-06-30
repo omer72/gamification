@@ -96,10 +96,31 @@ class ParseService {
     console.log("ParseService getClallUser");
     var ClallUser = Parse.Object.extend("ClallUser");
     var query = new Parse.Query(ClallUser);
-    query.ascending('points');
+    query.descending('points');
     query.find({
       success: function(results) {
 
+        defer.resolve(results);
+      },
+      error: function(error) {
+        defer.reject(error);
+      }
+    });
+
+    return defer.promise;
+  }
+
+  updateClallUserPoints(user){
+    var defer = this.q.defer();
+    var vm = this;
+    console.log("ParseService getClallUser");
+    var ClallUser = Parse.Object.extend("ClallUser");
+    var query = new Parse.Query(ClallUser);
+    query.equalTo("userId", user.userId);
+    query.find({
+      success: function(results) {
+        results[0].set('points',user.points);
+        results[0].save();
         defer.resolve(results);
       },
       error: function(error) {
@@ -181,6 +202,48 @@ class ParseService {
       error : function(err){
         console.error("Error: " + error.code + " " + error.message);
         defer.reject(err);
+      }
+    });
+
+    return defer.promise;
+  }
+
+  getSystemRules(){
+    var defer = this.q.defer();
+    var vm = this;
+    console.log("ParseService getSystemRules");
+    var SystemRules = Parse.Object.extend("systemRules");
+    var query = new Parse.Query(SystemRules);
+    query.find({
+      success: function(results) {
+
+        defer.resolve(results);
+      },
+      error: function(error) {
+        defer.reject(error);
+      }
+    });
+
+    return defer.promise;
+  }
+
+  updateSystemRules(systemRule){
+    var defer = this.q.defer();
+    var vm = this;
+    console.log("ParseService updateSystemRules");
+    var SystemRules = Parse.Object.extend("systemRules");
+    var query = new Parse.Query(SystemRules);
+    //query.equalTo("userId", user.userId);
+    query.get(systemRule.id,{
+      success: function(results) {
+        results.set('firstLevel',systemRule.attributes.firstLevel);
+        results.set('secondLevel',systemRule.attributes.secondLevel);
+        results.set('thirdLevel',systemRule.attributes.thirdLevel);
+        results.save();
+        defer.resolve(results);
+      },
+      error: function(error) {
+        defer.reject(error);
       }
     });
 

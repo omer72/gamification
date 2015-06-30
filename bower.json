@@ -14,11 +14,11 @@
     "animate.css": "~3.3.0",
     "angular": "~1.4.0",
     "parse": "~1.4.2",
-    "jQuery": "~2.1.4",
-    "ui-grid": "~2.0.14"
+    "angular-messages": "~1.4.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0"
+
   },
   "resolutions": {
     "angular": "~1.4.0"

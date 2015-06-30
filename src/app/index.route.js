@@ -26,6 +26,12 @@ function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'GamePanelController',
       controllerAs: 'gamePanelCtrl'
     })
+    .state('system', {
+      url: '/system',
+      templateUrl: 'app/system/system.html',
+      controller: 'SystemController',
+      controllerAs: 'systemCtrl'
+    })
   ;
 
   $urlRouterProvider.otherwise('/login');

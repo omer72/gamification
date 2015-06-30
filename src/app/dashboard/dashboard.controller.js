@@ -10,10 +10,14 @@ class DashboardController {
     this.getClallUser($interval);
     this.clallUsers = [];
     this.questionList = [];
+    this.systemRules = {};
     this.stop;
     INIT.set(this,() =>{
       SERVICE.get(this).getQuestionList().then(questionList =>{
-      this.questionList = questionList;
+        this.questionList = questionList;
+      })
+      SERVICE.get(this).getSystemRules().then(systemRules =>{
+        this.systemRules  = systemRules[0];
     })
     });
     INIT.get(this)();
@@ -38,6 +42,33 @@ class DashboardController {
         })
     },5000)
   }
+
+  getSystemRules(){
+    var vm = this;
+    console.log('getSystemRules');
+
+      SERVICE.get(vm).getSystemRules().then(
+        function success(results){
+          console.log(results);
+        },
+        function error(err){
+          console.log("err ->"+vm);
+        })
+  }
+
+  updateSystemRule(){
+  var vm = this;
+  console.log('updateSystemRule');
+
+  SERVICE.get(vm).updateSystemRules(vm.systemRules).then(
+    function success(results){
+      console.log(results);
+    },
+    function error(err){
+      console.log("err ->"+vm);
+    })
+  }
+
 
 
 

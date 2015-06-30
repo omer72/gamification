@@ -1,0 +1,29 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Reward you Friend</h2>
+
+      </div>
+    </md-toolbar>
+    <md-dialog-content>{{rewardCtrl.selectedFriend}}
+      <md-radio-group ng-model="rewardCtrl.selectedFriend">
+      <md-list>
+        <md-list-item class="md-3-line" ng-repeat="item in rewardCtrl.clallUsers">
+            <md-radio-button value="{{item}}" class="md-primary">{{item.username}}</md-radio-button>
+        </md-list-item>
+      </md-list>
+      </md-radio-group>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+
+      <span flex></span>
+      <md-button ng-click="rewardCtrl.answer('Close')" class="md-primary">
+        Cancel
+      </md-button>
+      <md-button ng-click="rewardCtrl.answer('useful')" class="md-primary">
+        Submit
+      </md-button>
+    </div>
+  </form>
+</md-dialog>
