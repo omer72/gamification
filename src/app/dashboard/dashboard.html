@@ -33,15 +33,27 @@
                   <md-tab label="Reward Your Employee">
                     <md-content class="md-padding">
                       <h1 class="md-display-2">Reward Your Employee</h1>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.</p>
                     </md-content>
                   </md-tab>
                   <md-tab label="System Rules">
                     <md-content class="md-padding">
                       <h1 class="md-display-2">System Rules</h1>
-                      <h3>Range : 0 - <input required type="number"  ng-model="dashboardCtrl.systemRules.attributes.firstLevelTop" style="width: 50px" > : <input required type="number"  ng-model="dashboardCtrl.systemRules.attributes.firstLevel" style="width: 50px"> </h3>
-                      <h3>Range :<input required type="number"  ng-model="dashboardCtrl.systemRules.attributes.firstLevelTop" style="width: 50px"> - <input required type="number"  ng-model="dashboardCtrl.systemRules.attributes.secondLevelTop" style="width: 50px"> : <input required type="number"  ng-model="dashboardCtrl.systemRules.attributes.secondLevel" style="width: 50px"> </h3>
-                      <h3>Range :<input required type="number"  ng-model="dashboardCtrl.systemRules.attributes.secondLevelTop" style="width: 50px"> - 100 :<input required type="number"  ng-model="dashboardCtrl.systemRules.attributes.thirdLevel" style="width: 50px"> </h3>
+
+                      <div layout="row" layout-margin  layout-align="start center">
+                          
+                          <div flex flex-order="2" >
+                            <h3>: <input required type="number"  ng-model="dashboardCtrl.systemRules.attributes.firstLevel" style="width: 60px"> </h3>
+                      <h3> : <input required type="number"  ng-model="dashboardCtrl.systemRules.attributes.secondLevel" style="width: 60px"> </h3>
+                       <h3>:<input required type="number"  ng-model="dashboardCtrl.systemRules.attributes.thirdLevel" style="width: 60px"> </h3>
+                          </div>
+                          <div flex flex-order="1" style="width:350px" layout-align="start center">
+                            <h3>Range : 0 - <input required type="number"  ng-model="dashboardCtrl.systemRules.attributes.firstLevelTop" style="width: 60px" >
+                              <h3>Range :<input required type="number"  ng-model="dashboardCtrl.systemRules.attributes.firstLevelTop" style="width: 60px"> - <input required type="number"  ng-model="dashboardCtrl.systemRules.attributes.secondLevelTop" style="width: 60px"></h3>
+                                <h3>Range :<input required type="number"  ng-model="dashboardCtrl.systemRules.attributes.secondLevelTop" style="width: 60px"> - 100</h3>
+                          </div>
+                        </div>
+                       
                       <md-button class="md-raised" ng-click="dashboardCtrl.updateSystemRule()">Update</md-button>
                     </md-content>
                   </md-tab>
