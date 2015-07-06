@@ -99,8 +99,11 @@ class ParseService {
     query.descending('points');
     query.find({
       success: function(results) {
-
-        defer.resolve(results);
+          var users = [];
+          for (var j = 0; j < results.length; j++) {
+             users.push({"userId":results[j].attributes.userId,"display":results[j].attributes.username,"username": results[j].attributes.username, "points": results[j].attributes.points,"badge":results[j].attributes.badge});
+          }
+        defer.resolve(users);
       },
       error: function(error) {
         defer.reject(error);

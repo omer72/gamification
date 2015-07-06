@@ -6,19 +6,38 @@
 
       </div>
     </md-toolbar>
-    <md-dialog-content>{{rewardCtrl.selectedFriend}}
-      <md-radio-group ng-model="rewardCtrl.selectedFriend">
+    <md-dialog-content>
+    <md-autocomplete
+        ng-disabled="rewardCtrl.isDisabled"
+        md-no-cache="rewardCtrl.noCache"
+        md-selected-item="rewardCtrl.selectedItem"
+        md-search-text-change="rewardCtrl.searchTextChange(rewardCtrl.searchText)"
+        md-search-text="rewardCtrl.searchText"
+        md-selected-item-change="rewardCtrl.selectedItemChange(item)"
+        md-items="item in rewardCtrl.querySearch(rewardCtrl.searchText)"
+        md-item-text="item.display"
+        md-min-length="0"
+        placeholder="Who you want to reward?">
+      <md-item-template>
+        <span md-highlight-text="rewardCtrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+      </md-item-template>
+      <md-not-found>
+        No matches found for "{{rewardCtrl.searchText}}".
+      </md-not-found>
+    </md-autocomplete><br/>
+      <!-- <md-radio-group ng-model="rewardCtrl.selectedFriend">
       <md-list>
         <md-list-item class="md-3-line" ng-repeat="item in rewardCtrl.clallUsers">
-            <md-radio-button value="{{item}}" class="md-primary">{{item.username}}</md-radio-button>
+            <md-radio-button ng-value="{{item}}" class="md-primary">{{item.username}}</md-radio-button>
         </md-list-item>
       </md-list>
-      </md-radio-group>
+      </md-radio-group> -->
+      How many Points?<input required type="number"  ng-model="rewardCtrl.rewardsPoints" style="width: 60px" ></input>
     </md-dialog-content>
     <div class="md-actions" layout="row">
 
       <span flex></span>
-      <md-button ng-click="rewardCtrl.answer('Close')" class="md-primary">
+      <md-button ng-click="rewardCtrl.cancel()" class="md-primary">
         Cancel
       </md-button>
       <md-button ng-click="rewardCtrl.answer('useful')" class="md-primary">
