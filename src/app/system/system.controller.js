@@ -24,16 +24,16 @@ class SystemController {
   submitForm(){
     var vm = this;
     console.log('submitForm '+vm.rate);
-    if (vm.rate <= 40){
+    if (vm.rate <= vm.systemRules.firstLevelTop){
       console.log('submitForm '+vm.rate);
       vm.showRewardDialog(vm.systemRules.firstLevel);
-    }else if (vm.rate > 40 && vm.rate <= 70){
+    }else if (vm.rate > vm.systemRules.firstLevelTop && vm.rate <= vm.systemRules.secondLevelTop){
       console.log('submitForm '+vm.rate);
-      vm.showRewardDialog(vm.systemRules.firstLevel);
+      vm.showRewardDialog(vm.systemRules.secondLevel);
 
-    }else if (vm.rate > 70 && vm.rate <= 100){
+    }else if (vm.rate > vm.systemRules.secondLevelTop && vm.rate <= vm.systemRules.thirdLevelTop){
       console.log('submitForm '+vm.rate);
-      vm.showRewardDialog(vm.systemRules.firstLevel);
+      vm.showRewardDialog(vm.systemRules.thirdLevel);
 
     }
 

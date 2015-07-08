@@ -242,6 +242,9 @@ class ParseService {
         results.set('firstLevel',systemRule.attributes.firstLevel);
         results.set('secondLevel',systemRule.attributes.secondLevel);
         results.set('thirdLevel',systemRule.attributes.thirdLevel);
+        results.set('firstLevelTop',systemRule.attributes.firstLevelTop);
+        results.set('secondLevelTop',systemRule.attributes.secondLevelTop);
+        results.set('thirdLevelTop',systemRule.attributes.thirdLevelTop);
         results.save();
         defer.resolve(results);
       },
